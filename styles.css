@@ -1,0 +1,172 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #111;
+    color: #fff;
+}
+
+/* Navigation */
+header {
+    display: flex;
+    justify-content: center; /* Pusatkan navigasi */
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #111;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    left: 50px; /* Logo tetap di kiri */
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header ul li {
+    margin-left: 20px;
+}
+
+header ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+}
+
+
+/* Hero Section */
+#hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 50px;
+}
+
+.intro {
+    max-width: 50%;
+}
+
+.intro h1 {
+    font-size: 4em;
+    color: #fff;
+}
+
+.intro h1 span {
+    color: #ff4081;
+}
+
+.intro p {
+    margin: 20px 0;
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    background-color: transparent;
+    border: 2px solid #ff4081;
+    color: #ff4081;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff4081;
+    color: #fff;
+}
+
+.hero-img {
+    max-width: 40%;
+}
+
+.hero-img img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Divider */
+.divider {
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(to right, #ff4081, #ff80ab);
+    margin: 50px 0;
+}
+
+/* About Section */
+#about {
+    padding: 50px;
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#about p {
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #111;
+}
+
+.social-icons a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.social-icons a:hover {
+    color: #ff4081;
+}
+
+/* Animation Styles */
+.slide-in {
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slideIn 1s forwards; /* Trigger animasi */
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide Out Effect */
+.slide-out {
+    animation: slideOut 0.5s forwards;
+}
+
+@keyframes slideOut {
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
