@@ -3,54 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects</title>
-    <link rel="stylesheet" href="projects.css">
+    <title>My Portfolio</title>
+    <!-- Link ke Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="projects.css"> <!-- Link ke projects.css -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link ke styles.css untuk konsistensi -->
 </head>
 <body>
-    <header>
-        <div class="logo">Fasya's Projects</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="about-link">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <header class="bg-dark text-light py-3">
+        <nav class="container navbar navbar-expand-lg navbar-dark">
+            <div class="logo fs-3">Fasya.</div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul id="nav-list" class="navbar-nav ms-auto">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link active">Portfolio</a></li> <!-- Ganti "Projects" menjadi "Portfolio" -->
+                    <li class="nav-item"><a href="kontak.html" class="nav-link">Saran</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
-
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="card-container">
-            <div class="card">
-                <img src="project1.jpg" alt="Project 1">
-                <div class="card-content">
-                    <h3>Project One</h3>
-                    <p>A brief description of Project One. It showcases my skills in building responsive and dynamic websites.</p>
+    
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">My Portfolio</h2> <!-- Ganti judul section -->
+            <div class="card-container row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300" alt="Project 1" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title">Project One</h3>
+                            <p class="card-text">A brief description of Project One. It showcases my skills in building responsive and dynamic websites.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="project2.jpg" alt="Project 2">
-                <div class="card-content">
-                    <h3>Project Two</h3>
-                    <p>A brief description of Project Two. This project involved creating interactive elements and enhancing user experience.</p>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300" alt="Project 2" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title">Project Two</h3>
+                            <p class="card-text">A brief description of Project Two. This project involved creating interactive elements and enhancing user experience.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="project3.jpg" alt="Project 3">
-                <div class="card-content">
-                    <h3>Project Three</h3>
-                    <p>A brief description of Project Three. This project focused on advanced CSS techniques and JavaScript functionality.</p>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300" alt="Project 3" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title">Project Three</h3>
+                            <p class="card-text">A brief description of Project Three. This project focused on advanced CSS techniques and JavaScript functionality.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div>&copy; 2024 Fasya</div>
-        <div class="social-icons">
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
-            <a href="#">Twitter</a>
+    <footer class="bg-dark text-light text-center py-3">
+        <div class="social-icons mb-2">
+            <a href="#" class="text-light mx-2">LinkedIn</a>
+            <a href="#" class="text-light mx-2">GitHub</a>
+            <a href="#" class="text-light mx-2">Twitter</a>
         </div>
     </footer>
+
+    <!-- Link ke Bootstrap JS dan Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

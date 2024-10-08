@@ -6,7 +6,7 @@
 }
 
 /* Styling untuk navigasi */
-#nav-list .nav-link {
+.nav-link {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     color: #fff;
@@ -17,80 +17,81 @@
 }
 
 /* Hover effect di nav-link */
-#nav-list .nav-link:hover {
+.nav-link:hover {
     color: #f39c12; /* Warna hover emas */
     background-color: rgba(255, 255, 255, 0.1); /* Background sedikit transparan */
     border-radius: 5px;
 }
 
 /* Styling untuk active link */
-#nav-list .nav-link.active {
+.nav-link.active {
     color: #f39c12;
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.1); /* Background untuk link yang aktif */
     border-radius: 5px;
 }
 
-/* Bagian hero */
-#hero {
+/* Section about */
+#about {
     background-color: #f8f9fa; /* Warna background yang soft */
-    padding: 60px 0;
+    padding: 60px 0; /* Memberikan padding vertikal */
 }
 
-.intro h1 {
+#about h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: 48px;
+    font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #333; /* Warna judul */
+    text-align: center; /* Centering judul */
 }
 
-.intro p {
+#about p {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
-    color: #555;
+    color: #555; /* Warna teks */
+    text-align: center; /* Centering teks */
 }
 
+/* Button styling */
 .btn-primary {
-    background-color: #f39c12;
-    border-color: #f39c12;
-    transition: background-color 0.3s ease;
+    background-color: #800020; /* Warna button */
+    border: none; /* Menghilangkan border */
 }
 
 .btn-primary:hover {
-    background-color: #e67e22;
-    border-color: #e67e22;
+    background-color: #ba3971; /* Warna saat hover */
 }
 
 /* Footer */
 footer {
-    background-color: #2c3e50;
+    background-color: #2c3e50; /* Warna footer */
+    color: #fff; /* Warna teks footer */
 }
 
 footer a {
-    color: #f39c12;
+    color: #f39c12; /* Warna tautan di footer */
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease; /* Transisi warna */
 }
 
 footer a:hover {
-    color: #e67e22;
+    color: #e67e22; /* Warna hover tautan di footer */
 }
 
 /* Responsive styling */
 @media (max-width: 768px) {
-    .intro h1 {
-        font-size: 36px;
+    #about h2 {
+        font-size: 28px; /* Ukuran font lebih kecil untuk judul */
     }
 
-    .intro p {
-        font-size: 16px;
+    #about p {
+        font-size: 16px; /* Ukuran font lebih kecil untuk teks */
     }
 
-    #nav-list .nav-link {
-        padding: 10px;
+    .nav-link {
+        padding: 10px; /* Padding lebih kecil untuk link di nav */
     }
 }
-
 
 /* Animasi slide-in */
 .slide-in {
@@ -106,22 +107,4 @@ footer a:hover {
         transform: translateX(0); /* Berhenti di posisi normal */
         opacity: 1; /* Akhirnya terlihat */
     }
-}
-
-
-/* Styling untuk navigasi */
-.nav-link {
-    color: #fff; /* Warna teks normal */
-    transition: color 0.3s ease; /* Transisi halus untuk perubahan warna */
-}
-
-/* Hover effect di nav-link */
-.nav-link:hover {
-    color: #f39c12; /* Warna hover emas */
-}
-
-/* Styling untuk active link */
-.nav-link.active {
-    color: #f39c12; /* Warna untuk link yang aktif */
-    font-weight: bold; /* Membuat link aktif lebih tebal */
 }
