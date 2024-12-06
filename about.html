@@ -1,67 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>About Fasya</title>
-    <!-- Link ke Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Link ke stylesheet custom -->
-    <link rel="stylesheet" href="about.css">
+    <title>About - Portofolio</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #111;
+            color: #fff;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #111;
+            
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .navbar-toggler {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+
+        .navbar-toggler span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        header ul {
+            list-style: none;
+            display: flex;
+            
+        }
+
+        header ul li {
+            margin-left: 20px;
+        }
+
+        header ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease-in-out;
+        }
+
+         /* Responsif untuk layar kecil */
+    @media (max-width: 768px) {
+        header ul {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #111;
+            width: 200px;
+            height: 0;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0;
+            transition: height 0.3s ease-in-out;
+        }
+
+        header ul li {
+            margin: 15px 20px;
+        }
+
+        .navbar-toggler {
+            display: block;
+        }
+
+        header ul.active {
+            height: 250px; /* Sesuaikan dengan jumlah item menu */
+        }
+
+        header ul li a {
+            font-size: 18px;
+        }
+    }
+
+        /* About Section */
+        #about {
+           padding: 50px;
+           text-align: center;
+           color: #fff;
+           border-radius: 10px; /* Biar lebih modern */
+           margin: 20px auto;
+           max-width: 800px; /* Supaya konten nggak terlalu melebar */
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Tambahkan sedikit bayangan */
+        }
+
+        #about h2 {
+          font-size: 2.5em;
+          margin-bottom: 20px;
+         color: #ff4081; /* Supaya heading lebih menonjol */
+        }
+
+        #about p {
+          font-size: 1.1em;
+          line-height: 1.8; /* Jarak antar baris lebih nyaman dibaca */
+         margin: 0 auto;
+         max-width: 700px; /* Batasi lebar teks */
+        }
+
+
+        /* Services Section */
+        #services {
+            padding: 50px;
+        }
+
+        #services h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .service-list {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .service-item {
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .service-item h4 {
+            margin-top: 10px;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+           padding: 50px;
+           background-color: #222;
+        }
+
+        #testimonials h3 {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .testimonial {
+            display: flex;
+            justify-content: center;
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .testimonial img {
+           width: 100%;
+          border-radius: 10px; /* Persegi panjang dengan sudut melengkung */
+        }
+
+
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #111;
+        }
+
+        .social-icons a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        .social-icons a:hover {
+            color: #ff4081;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header ul {
+                display: none;
+            }
+
+            header ul.active {
+                display: flex;
+                flex-direction: column;
+                background-color: #111;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+            }
+
+            .navbar-toggler {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header with navigation -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand logo" href="#">Fasya.</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="projects.html">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="kontak.html">Saran</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div class="logo"></div>
+        <button class="navbar-toggler" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul id="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="kontak.html">Saran</a></li>
+        </ul>
     </header>
 
-    <!-- Section about -->
-    <section id="about" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2 class="text-center mb-4">About Me</h2>
-                    <p class="lead">Aku adalah mahasiswa semester 3, dengan cita-cita menjadi kreator konten besar. Saat ini, aku fokus membuat konten gaming di YouTube dan terus mengasah kemampuan editing video.</p>
-                    <p class="lead">Aku juga sangat tertarik pada dunia teknologi dan editing. Menggabungkan keduanya untuk membuat konten yang menarik adalah bagian dari mimpiku!</p>
-                    <p class="lead text-center">
-                        <a href="projects.html" class="btn btn-primary">Lihat Portofoliku</a>
-                    </p>
-                </div>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Hi, My full name is Feroga Radja Fasyahira! I'm a 3rd-semester Informatics student with a passion for video editing, game content creation, and leveraging AI technologies. 
+            I’m skilled in using AI-powered tools like prompt engineering to streamline projects, and I’ve even completed a bootcamp on web development with AI integration. 
+            Currently, I’ve successfully completed an exciting e-commerce web project. Take a look at my portfolio and let’s collaborate to create something amazing together!
+        </p>
+    </section>
+    
+
+    <section id="services">
+        <h3>Services I Offer</h3>
+        <div class="service-list">
+            <div class="service-item">
+                <h4>🎬 Video Editing</h4>
+            </div>
+            <div class="service-item">
+                <h4>💻 Web Development</h4>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2024 Ferdaily. All rights reserved.</p>
+    <section id="testimonials">
+        <h3>What People Say</h3>
+        <div class="testimonial">
+            <img src="komen1.jpg" alt="Feedback User 1">
+        </div>
+        <div class="testimonial">
+            <img src="komen2.jpg" alt="Feedback User 2">
+        </div>
+        <div class="testimonial">
+            <img src="komen3.jpg" alt="Feedback User 3">
+        </div>
+    </section>
+    
+
+    <footer>
+        <div>&copy; 2024 FeroFasya</div>
+        <div class="social-icons">
+            <a href="https://www.tiktok.com/@ferdailyyy">Tiktok</a>
+            <a href="https://www.youtube.com/@FerDaily">Youtube</a>
+            <a href="https://www.instagram.com/ferogaaa">Instagram</a>
+        </div>
     </footer>
 
-    <!-- Bootstrap JS dan Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

@@ -1,76 +1,504 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <!-- Link ke Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="projects.css"> <!-- Link ke projects.css -->
-    <link rel="stylesheet" href="styles.css"> <!-- Link ke styles.css untuk konsistensi -->
+    <title>Projects - Portofolioku</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #111;
+            color: #fff;
+        }
+    
+        /* Navigation */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background-color: #111;
+        position: relative;
+    }
+
+    header .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    /* Hamburger Menu */
+    .navbar-toggler {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: none;
+    }
+
+    .navbar-toggler span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: #fff;
+        margin: 5px 0;
+        transition: all 0.3s ease;
+    }
+
+    /* Menu */
+    header ul {
+        list-style: none;
+        display: flex;
+    }
+
+    header ul li {
+        margin-left: 20px;
+    }
+
+    header ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        transition: color 0.3s ease-in-out;
+    }
+
+    
+
+    /* Responsif untuk layar kecil */
+    @media (max-width: 768px) {
+        header ul {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #111;
+            width: 200px;
+            height: 0;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0;
+            transition: height 0.3s ease-in-out;
+        }
+
+        header ul li {
+            margin: 15px 20px;
+        }
+
+        .navbar-toggler {
+            display: block;
+        }
+
+        header ul.active {
+            height: 250px; /* Sesuaikan dengan jumlah item menu */
+        }
+
+        header ul li a {
+            font-size: 18px;
+        }
+    }
+    
+        /* Projects Section */
+        #projects {
+            padding: 50px;
+            background-color: ;
+            text-align: center;
+        }
+    
+        #projects h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+    
+        #projects p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 50px;
+        }
+    
+        .card-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    
+        .card {
+            background: #333;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+    
+        .card:hover {
+            transform: translateY(-10px);
+        }
+    
+        .card img {
+         width: 100%; /* Memastikan gambar tetap mengikuti lebar card */
+         height: auto; /* Biarkan tinggi gambar menyesuaikan proporsi aslinya */
+         border-radius: 5px;
+        }
+
+    
+        .card a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #ff4081;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    
+        .separator {
+            border: none;
+            border-top: 2px solid #ff4081; /* Warna pink */
+            margin: 50px auto; /* Jarak atas-bawah */
+            width: 50%; /* Lebar garis */
+        }
+    
+        /* Testimonials Section */
+        #testimonials {
+           padding: 50px;
+           background-color: #222;
+        }
+
+        #testimonials h3 {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .testimonial {
+            display: flex;
+            justify-content: center;
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .testimonial img {
+           width: 100%;
+          border-radius: 10px; /* Persegi panjang dengan sudut melengkung */
+        }
+    
+        /* Software Section */
+        #software {
+            padding: 50px;
+            background-color: #222;
+            text-align: center;
+        }
+    
+        #software h3 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        /* software list */
+    
+        .software-list {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    
+        .software-card {
+            background: #333;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+    
+        .software-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+    
+        .software-card p {
+            font-size: 1.1em;
+        }
+
+        /*software2 list*/
+
+        .software2-list {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    
+        .software2-card {
+            background: #333;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+    
+        .software2-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+    
+        .software2-card p {
+            font-size: 1.1em;
+        }
+    
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #111;
+        }
+    
+        .social-icons a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+    
+        .social-icons a:hover {
+            color: #ff4081;
+        }
+    
+        /* Responsif untuk screen kecil */
+        @media (max-width: 768px) {
+            /* Mengatur layout untuk section project */
+            #projects {
+                padding: 30px;
+            }
+    
+            #projects h2 {
+                font-size: 2em;
+            }
+    
+            #projects p {
+                font-size: 1em;
+            }
+    
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+    
+            .card {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+    
+            /* Mengubah ukuran font pada judul project */
+            .separator {
+                width: 80%;
+            }
+    
+            /* Testimonials section */
+            #testimonials .testimonial {
+                flex-direction: column;
+                text-align: center;
+            }
+    
+            /* Software section */
+            #software .software-list {
+                flex-direction: column;
+                align-items: center;
+            }
+    
+            #software .software-card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+    
+            /* Footer */
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+    
+            footer .social-icons {
+                margin-top: 10px;
+            }
+        }
+    
+        /* Responsif untuk layar lebih besar (tablet) */
+        @media (max-width: 1024px) {
+            #hero h1 {
+                font-size: 2.5em;
+            }
+    
+            .card-container {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+    
+            .card {
+                width: 45%;
+            }
+    
+            #testimonials .testimonial {
+                flex-direction: row;
+                text-align: left;
+            }
+    
+            #software .software-card {
+                width: 45%;
+            }
+    
+            footer {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    </style>    
 </head>
 <body>
-    <header class="bg-dark text-light py-3">
-        <nav class="container navbar navbar-expand-lg navbar-dark">
-            <div class="logo fs-3">Fasya.</div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul id="nav-list" class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="projects.html" class="nav-link active">Portfolio</a></li> <!-- Ganti "Projects" menjadi "Portfolio" -->
-                    <li class="nav-item"><a href="kontak.html" class="nav-link">Saran</a></li>
-                </ul>
-            </div>
-        </nav>
+    <header>
+        <div class="logo"></div>
+        <button class="navbar-toggler" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul id="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="kontak.html">Saran</a></li>
+        </ul>
     </header>
     
-    <section id="projects" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">My Portfolio</h2> <!-- Ganti judul section -->
-            <div class="card-container row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300" alt="Project 1" class="card-img-top">
-                        <div class="card-body">
-                            <h3 class="card-title">Project One</h3>
-                            <p class="card-text">A brief description of Project One. It showcases my skills in building responsive and dynamic websites.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300" alt="Project 2" class="card-img-top">
-                        <div class="card-body">
-                            <h3 class="card-title">Project Two</h3>
-                            <p class="card-text">A brief description of Project Two. This project involved creating interactive elements and enhancing user experience.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <img src="https://via.placeholder.com/300" alt="Project 3" class="card-img-top">
-                        <div class="card-body">
-                            <h3 class="card-title">Project Three</h3>
-                            <p class="card-text">A brief description of Project Three. This project focused on advanced CSS techniques and JavaScript functionality.</p>
-                        </div>
-                    </div>
-                </div>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <p>Here are some of my best works and projects showcasing my skills in web development, Thumbnail editing, and AI integration.</p>
+
+        <div class="card-container">
+            <!-- Web Development Projects -->
+            <div class="card">
+                <img src="project1.jpg" alt="Project 1">
+                <h3>Glamora-Online Store</h3>
+                <p>Ini adalah project akhir (membuat E-commerce) yang ku buat di Bootcamp Bandung Ai: Develompent with AI</p>
+                <a href="https://yourproject1link.com" target="_blank">aku lupa hosting :b</a>
+            </div>
+            <div class="card">
+                <img src="project2.jpg" alt="Project 2">
+                <h3>About chara in MLBB</h3>
+                <p>Tujuanku membuat web ini untuk mendeskripsikan cerita/lore atau kategori dari karakter/hero di game MLBB</p>
+                <a href="https://yourproject2link.com" target="_blank">View Project</a>
+            </div>
+            <div class="card">
+                <img src="project3.jpg" alt="Project 3">
+                <h3>Web Promotion </h3>
+                <p>aku membuat web ini (iseng) untuk mempromosikan sebuah game online (MLBB)</p>
+                <a href="https://yourproject3link.com" target="_blank">View Project</a>
+            </div>
+        </div>
+
+        <hr class="separator">
+
+        <h2>Thumbnail Editing</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="thumbnail1.jpg" alt="Thumbnail 1">
+                <p>Thumbnail editing example 1.</p>
+            </div>
+            <div class="card">
+                <img src="thumbnail2.jpg" alt="Thumbnail 2">
+                <p>Thumbnail editing example 2.</p>
+            </div>
+            <div class="card">
+                <img src="thumbnail3.jpg" alt="Thumbnail 3">
+                <p>Thumbnail editing example 3.</p>
             </div>
         </div>
     </section>
 
-    <footer class="bg-dark text-light text-center py-3">
-        <div class="social-icons mb-2">
-            <a href="#" class="text-light mx-2">LinkedIn</a>
-            <a href="#" class="text-light mx-2">GitHub</a>
-            <a href="#" class="text-light mx-2">Twitter</a>
+    <hr class="separator">
+
+
+    <section id="testimonials">
+        <h3>AI Prompt Screenshots</h3>
+        <div class="testimonial">
+            <img src="ai1.jpg" alt="AI Prompt 1">
+            <p></p>
+        </div>
+        <div class="testimonial">
+            <img src="ai2.jpg" alt="AI Prompt 2">
+            <p></p>
+        </div>
+    </section>
+
+    <hr class="separator">
+
+    <section id="software">
+        <h3>Software I Use</h3>
+        <div class="software-list">
+            <div class="software-card">
+                <img src=".png" alt="Software 1">
+                <p>Software 1</p>
+            </div>
+            <div class="software-card">
+                <img src="software2.png" alt="Software 2">
+                <p>Software 2</p>
+            </div>
+            <div class="software-card">
+                <img src="software3.png" alt="Software 3">
+                <p>Software 3</p>
+            </div>
+            <div class="software-card">
+                <img src="software4.png" alt="software 4">
+                <p>Software 4</p>
+            </div>
+        </div>
+
+        <hr class="separator">
+
+        <div class="software2-list">
+            <div class="software2-card">
+                <img src="vscode.png" alt="software 5">
+                <p>VS Code</p>
+            </div>
+            <div class="software2-card">
+                <img src="capcut.png" alt="software 6">
+                <p>Capcut</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>&copy; 2024 FeroFasya</div>
+        <div class="social-icons">
+            <a href="https://www.tiktok.com/@ferdailyyy">Tiktok</a>
+            <a href="https://www.youtube.com/@FerDaily">Youtube</a>
+            <a href="https://www.instagram.com/ferogaaa">Instagram</a>
         </div>
     </footer>
 
-    <!-- Link ke Bootstrap JS dan Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleMenu() {
+            const navbar = document.getElementById("navbar");
+            navbar.classList.toggle("active");
+        }
+    </script>
+    
 </body>
 </html>

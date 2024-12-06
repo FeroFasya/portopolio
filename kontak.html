@@ -55,8 +55,6 @@
         header ul {
             list-style: none;
             display: flex;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         header ul li {
@@ -70,6 +68,39 @@
             transition: color 0.3s ease-in-out;
         }
 
+        /* Responsif untuk layar kecil */
+    @media (max-width: 768px) {
+        header ul {
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #111;
+            width: 200px;
+            height: 0;
+            overflow: hidden;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0;
+            transition: height 0.3s ease-in-out;
+        }
+
+        header ul li {
+            margin: 15px 20px;
+        }
+
+        .navbar-toggler {
+            display: block;
+        }
+
+        header ul.active {
+            height: 250px; /* Sesuaikan dengan jumlah item menu */
+        }
+
+        header ul li a {
+            font-size: 18px;
+        }
+    }
+        
         /* Hero Section */
         #hero {
             display: flex;
@@ -206,7 +237,7 @@
 </head>
 <body>
     <header>
-        <div class="logo">Fasya.</div>
+        <div class="logo"></div>
         <button class="navbar-toggler" onclick="toggleMenu()">
             <span></span>
             <span></span>
@@ -215,15 +246,15 @@
         <ul id="navbar">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html" class="about-link">About</a></li>
-            <li><a href="projects.html">Portfolio</a></li>
+            <li><a href="projects.html">Projects</a></li>
             <li><a href="kontak.html">Saran</a></li>
         </ul>
     </header>
 
     <section id="hero">
         <div class="intro">
-            <h1>Berikan <span>Saran</span></h1>
-            <p>Berikan pendapatmu tentang portofolioku. Saranmu sangat berarti!</p>
+            <h1>Berikan aku <span>Saran</span></h1>
+            <p>Sebelum Kamu ingin kontak aku, alangkah baiknya beri aku saran terlebih dahulu, Berikan pendapatmu tentang portofolioku. Saranmu sangat berarti!</p>
             <a href="#contact" class="btn">Kirim Saran</a>
         </div>
     </section>
@@ -234,7 +265,6 @@
         <h2>Saran untuk Portofolio</h2>
         <form>
             <input type="text" name="name" placeholder="Nama" required>
-            <input type="email" name="email" placeholder="Email" required>
             <textarea name="message" rows="5" placeholder="Saran" required></textarea>
             <input type="submit" value="Kirim">
         </form>
