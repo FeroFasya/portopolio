@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <title>Home - Portofolioku</title>
     <style>
         /* Global Styles */
@@ -13,7 +14,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: #111;
             color: #fff;
         }
@@ -28,76 +29,157 @@
             position: relative;
         }
 
-        header .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .navbar-toggler {
-            background: none;
+        /* Desain Button Menu */
+        #menuBtn {
+            font-size: 30px;
+            background-color: transparent;
             border: none;
             cursor: pointer;
-            display: none;
-        }
-
-        .navbar-toggler span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: #fff;
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        header ul {
-            list-style: none;
-            display: flex;
-        }
-
-        header ul li {
-            margin-left: 20px;
-        }
-
-        header ul li a {
             color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s ease-in-out;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
 
-        /* Responsif untuk layar kecil */
-    @media (max-width: 768px) {
-        header ul {
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background-color: #111;
-            width: 200px;
-            height: 0;
-            overflow: hidden;
+        #menuBtn:hover {
+            color: #00bcd4; /* Warna saat hover */
+            transform: scale(1.1); /* Memberikan efek perbesaran */
+        }
+
+        /* Desain Navbar */
+        #navbar {
+            display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            background-color: #111;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100vh;
+            padding-top: 60px;
+            transform: translateX(100%); /* Menyembunyikan navbar saat menu off */
+            transition: transform 0.4s ease-in-out;
+            opacity: 0;
+        }
+
+        /* Ketika menu aktif */
+        #navbar.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Tautan di Navbar */
+        #navbar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover efek pada tautan */
+        #navbar a:hover {
+            background-color: #00bcd4; /* Warna saat hover */
+        }
+
+        /* Desain untuk <ul> */
+        #menuItems {
+            list-style: none; /* Menghapus bullet point */
             padding: 0;
-            transition: height 0.3s ease-in-out;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        header ul li {
-            margin: 15px 20px;
+        /* Desain untuk tiap <li> */
+        #menuItems li {
+            width: 100%;
         }
 
-        .navbar-toggler {
+        /* Desain untuk tautan <a> */
+        #menuItems a {
             display: block;
-        }
-
-        header ul.active {
-            height: 250px; /* Sesuaikan dengan jumlah item menu */
-        }
-
-        header ul li a {
+            padding: 15px;
+            text-decoration: none;
+            color: #fff;
             font-size: 18px;
+            background-color: #111;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-    }
+
+        /* Efek saat hover */
+        #menuItems a:hover {
+            background-color: #00bcd4; /* Warna saat hover */
+            color: white;
+            transform: translateX(10px); /* Menambah efek geser */
+        }
+
+        /* Desain untuk link yang aktif */
+        #menuItems a.active {
+            background-color: #00bcd4;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
+        }
+
+        /* Media Query untuk Responsif (Mobile dan Tablet) */
+        @media screen and (max-width: 768px) {
+            /* Button Menu */
+            #menuBtn {
+                font-size: 28px;
+            }
+
+            /* Navbar: membuatnya penuh di layar kecil */
+            #navbar {
+                width: 200px;
+                height: auto;
+                position: fixed;
+                top: 0;
+                left: 0; /* Menempatkan navbar di kiri */
+                transform: translateX(-100%); /* Menyembunyikan navbar di awal */
+                opacity: 1;
+                z-index: 99;
+            }
+
+            /* Ketika navbar aktif di layar kecil, di sebelah kiri */
+            #navbar.active {
+                transform: translateX(0);
+            }
+
+            /* Styling untuk setiap item di navbar */
+            #navbar a {
+                font-size: 18px;
+                padding: 12px 20px;
+            }
+
+            /* Menu items di <ul> */
+            #menuItems {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+
+            /* Menjadikan setiap <li> responsif */
+            #menuItems li {
+                width: 100%;
+            }
+        }
+
+        /* Media Query untuk responsif di layar kecil (mobile) */
+        @media screen and (max-width: 480px) {
+            #menuItems a {
+                font-size: 16px; /* Menyesuaikan ukuran font lebih kecil */
+                padding: 12px;
+            }
+            
+            #menuBtn {
+                font-size: 28px;
+            }
+        }
+
+    
 
         /* Hero Section */
         #hero {
@@ -115,7 +197,7 @@
         }
 
         .intro h1 span {
-            color: #ff4081;
+            color:  #00bcd4;
         }
 
         .intro p {
@@ -129,17 +211,85 @@
             padding: 10px 30px;
             margin-top: 20px;
             background-color: transparent;
-            border: 2px solid #ff4081;
-            color: #ff4081;
+            border: 2px solid  #00bcd4;
+            color:  #00bcd4;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
         }
 
         .btn:hover {
-            background-color: #ff4081;
-            color: #fff;
+            background-color: #fff;
+            border: 2px solid  #00bcd4;
+            color:  #00bcd4;
         }
+
+        /* Skills Section */
+        #skills-section {
+            text-align: left;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        .skill-container {
+            margin-bottom: 15px;
+        }
+
+        /* Slider */
+        input[type="range"] {
+            width: 100%;
+            margin: 5px 0;
+            appearance: none;
+            height: 10px;
+            border-radius: 5px;
+            background: #444;
+            outline: none;
+            transition: background 0.2s ease;
+        }
+
+        input[type="range"]:hover {
+            background: #00bcd4;
+        }
+
+         /* Popup Container */
+         #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #popup p {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-family: Arial, sans-serif;
+        }
+
+        #popup img {
+            max-width: 200px;
+            height: auto;
+            margin-top: 10px;
+        }
+
+
+
+        @keyframes slideDown {
+            0% {
+                top: -350px;
+            }
+
+            100% {
+                top: 0;
+            }
+        }
+
 
         /* Footer */
         footer {
@@ -158,7 +308,7 @@
         }
 
         .social-icons a:hover {
-            color: #ff4081;
+            color: #00bcd4;
         }
 
         /* Media Queries */
@@ -186,18 +336,19 @@
 </head>
 <body>
     <header>
-        <div class="logo"></div>
-        <button class="navbar-toggler" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button id="menuBtn" onclick="toggleMenu()" aria-label="Toggle Menu">
+            ☰
         </button>
-        <ul id="navbar">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="kontak.html">Saran</a></li>
-        </ul>
+        
+        <nav id="navbar">
+            <!-- Menu items akan berada di sini -->
+            <ul id="menuItems">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="kontak.html">Saran</a></li>
+            </ul>
+        </nav>
     </header>
 
 
@@ -206,41 +357,46 @@
             <!-- Tambahan konten baru -->
             <h1>Hi, I'm <span>Fasya</span>, a Content Creator & Web Developer!</h1>
             <p>Kenali lebih dekat siapa aku, projek yang aku buat, dan saranmu sangat berarti!</p>
-    
+        
             <!-- Foto Profesional atau Ilustrasi -->
             <img src="aku.jpg" alt="Foto Fasya" style="width: 150px; height: 150px; border-radius: 50%; margin: 20px 0;">
-    
+        
             <!-- CTA Buttons -->
             <div style="margin: 20px 0;">
                 <a href="projects.html" class="btn">See My Work</a>
                 <a href="about.html" class="btn">About me?</a>
             </div>
-    
-        <!-- Keahlian / Skills -->
-        <div style="text-align: left; max-width: 400px; margin: 20px auto;">
-            <h3>Skills</h3>
-         <div style="display: flex; align-items: center; justify-content: space-between;">
-              <p>HTML/CSS</p>
-              <span>60%</span>
-          </div>
-         <div style="background: #444; height: 10px; border-radius: 5px; margin-bottom: 10px;">
-             <div style="width: 60%; background: #ff4081; height: 100%; border-radius: 5px;"></div>
-         </div>
-         <div style="display: flex; align-items: center; justify-content: space-between;">
-             <p>Video Editing</p>
-              <span>65%</span>
-         </div>
-            <div style="background: #444; height: 10px; border-radius: 5px; margin-bottom: 10px;">
-             <div style="width: 65%; background: #ff4081; height: 100%; border-radius: 5px;"></div>
-         </div>
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-             <p>Backend Development</p>
-                <span>20%</span>
-          </div>
-            <div style="background: #444; height: 10px; border-radius: 5px; margin-bottom: 10px;">
-             <div style="width: 20%; background: #ff4081; height: 100%; border-radius: 5px;"></div>
-           </div>
         </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills-section">
+        <h3>Skills</h3>
+        <!-- HTML/CSS Slider -->
+        <div class="skill-container">
+            <p>HTML/CSS</p>
+            <input type="range" min="0" max="100" value="60" id="htmlSlider">
+            <span id="htmlPercent">60%</span>
+        </div>
+        <!-- Video Editing Slider -->
+        <div class="skill-container">
+            <p>Video Editing</p>
+            <input type="range" min="0" max="100" value="65" id="videoSlider">
+            <span id="videoPercent">65%</span>
+        </div>
+        <!-- Backend Development Slider -->
+        <div class="skill-container">
+            <p>Backend Development</p>
+            <input type="range" min="0" max="100" value="20" id="backendSlider">
+            <span id="backendPercent">20%</span>
+        </div>
+    </section>
+
+    <!-- Popup Section -->
+    <div id="popup">
+        <p id="popupText">Placeholder Text</p>
+        <img id="popupImage" src="" alt="Popup Image" />
+    </div>
 
     
 
@@ -254,10 +410,88 @@
     </footer>
 
     <script>
+        const popupContainer = document.getElementById('popup');
+        const popupText = document.getElementById('popupText');
+        const popupImage = document.getElementById('popupImage');
+
+        // Fungsi untuk menampilkan popup dengan gambar
+        function showPopup(message, imgSrc) {
+            popupText.innerText = message;
+            popupImage.src = imgSrc; // Ganti sumber gambar
+            popupContainer.style.display = "block";
+
+            setTimeout(() => {
+                popupContainer.style.display = "none";
+            }, 3000); // Popup muncul selama 3 detik
+        }
+
+        // Handle slider untuk HTML Slider
+        function handleSkillSlider(slider, percentLabel, threshold, increaseMessage, decreaseMessage, happyImg, sadImg) {
+            slider.addEventListener('input', function () {
+                const currentValue = slider.value;
+                percentLabel.innerText = `${currentValue}%`;
+
+                // Jika nilai slider naik atau turun melewati ambang batas
+                if (currentValue > threshold) {
+                    showPopup(increaseMessage, happyImg); // Jika nilai lebih tinggi
+                } else if (currentValue < threshold) {
+                    showPopup(decreaseMessage, sadImg); // Jika nilai lebih rendah
+                }
+            });
+        }
+
+        // Panggil fungsi slider dengan gambar stiker
+        handleSkillSlider(
+            document.getElementById('htmlSlider'), 
+            document.getElementById('htmlPercent'), 
+            60, 
+            'Makasih udah naikin skill HTML/CSS-ku!', 
+            'Kenapa kamu turunin skill HTML/CSS-ku?', 
+            'seneng.png', 
+            'kesel.png'
+        );
+
+        handleSkillSlider(
+            document.getElementById('videoSlider'), 
+            document.getElementById('videoPercent'), 
+            65, 
+            'Makasih udah naikin skill Video Editing-ku!', 
+            'Kenapa kamu turunin skill Video Editing-ku?', 
+            'seneng.png', 
+            'kesel.png'
+        );
+
+        handleSkillSlider(
+            document.getElementById('backendSlider'), 
+            document.getElementById('backendPercent'), 
+            20, 
+            'Makasih udah naikin skill Backend Development-ku!', 
+            'Kenapa kamu turunin skill Backend Development-ku?', 
+            'seneng.png', 
+            'kesel.png'
+        );
+
         function toggleMenu() {
             const navbar = document.getElementById('navbar');
             navbar.classList.toggle('active');
         }
+
+        // Menutup menu jika klik di luar navbar
+        document.addEventListener('click', function(event) {
+            const navbar = document.getElementById('navbar');
+            const menuButton = document.getElementById('menuBtn');
+
+            // Jika klik di luar tombol menu dan navbar
+            if (!navbar.contains(event.target) && !menuButton.contains(event.target)) {
+                navbar.classList.remove('active');
+            }
+        });
+
+
+
+        
+
     </script>
+
 </body>
 </html>

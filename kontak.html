@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saran untuk Portofolio</title>
     <style>
@@ -13,7 +14,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: #111;
             color: #fff;
         }
@@ -28,78 +29,155 @@
             position: relative;
         }
 
-        header .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        /* Hamburger Menu */
-        .navbar-toggler {
-            background: none;
+        /* Desain Button Menu */
+        #menuBtn {
+            font-size: 30px;
+            background-color: transparent;
             border: none;
             cursor: pointer;
-            display: none; /* Sembunyikan tombol di layar besar */
-        }
-
-        .navbar-toggler span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: #fff;
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        /* Menu */
-        header ul {
-            list-style: none;
-            display: flex;
-        }
-
-        header ul li {
-            margin-left: 20px;
-        }
-
-        header ul li a {
             color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s ease-in-out;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
 
-        /* Responsif untuk layar kecil */
-    @media (max-width: 768px) {
-        header ul {
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background-color: #111;
-            width: 200px;
-            height: 0;
-            overflow: hidden;
+        #menuBtn:hover {
+            color: #00bcd4; /* Warna saat hover */
+            transform: scale(1.1); /* Memberikan efek perbesaran */
+        }
+
+        /* Desain Navbar */
+        #navbar {
+            display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            background-color: #111;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100vh;
+            padding-top: 60px;
+            transform: translateX(100%); /* Menyembunyikan navbar saat menu off */
+            transition: transform 0.4s ease-in-out;
+            opacity: 0;
+        }
+
+        /* Ketika menu aktif */
+        #navbar.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Tautan di Navbar */
+        #navbar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover efek pada tautan */
+        #navbar a:hover {
+            background-color: #00bcd4; /* Warna saat hover */
+        }
+
+        /* Desain untuk <ul> */
+        #menuItems {
+            list-style: none; /* Menghapus bullet point */
             padding: 0;
-            transition: height 0.3s ease-in-out;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        header ul li {
-            margin: 15px 20px;
+        /* Desain untuk tiap <li> */
+        #menuItems li {
+            width: 100%;
         }
 
-        .navbar-toggler {
+        /* Desain untuk tautan <a> */
+        #menuItems a {
             display: block;
-        }
-
-        header ul.active {
-            height: 250px; /* Sesuaikan dengan jumlah item menu */
-        }
-
-        header ul li a {
+            padding: 15px;
+            text-decoration: none;
+            color: #fff;
             font-size: 18px;
+            background-color: #111;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-    }
+
+        /* Efek saat hover */
+        #menuItems a:hover {
+            background-color: #00bcd4; /* Warna saat hover */
+            color: white;
+            transform: translateX(10px); /* Menambah efek geser */
+        }
+
+        /* Desain untuk link yang aktif */
+        #menuItems a.active {
+            background-color: #00bcd4;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
+        }
+
+        /* Media Query untuk Responsif (Mobile dan Tablet) */
+        @media screen and (max-width: 768px) {
+            /* Button Menu */
+            #menuBtn {
+                font-size: 28px;
+            }
+
+            /* Navbar: membuatnya penuh di layar kecil */
+            #navbar {
+                width: 200px;
+                height: auto;
+                position: fixed;
+                top: 0;
+                left: 0; /* Menempatkan navbar di kiri */
+                transform: translateX(-100%); /* Menyembunyikan navbar di awal */
+                opacity: 1;
+                z-index: 99;
+            }
+
+            /* Ketika navbar aktif di layar kecil, di sebelah kiri */
+            #navbar.active {
+                transform: translateX(0);
+            }
+
+            /* Styling untuk setiap item di navbar */
+            #navbar a {
+                font-size: 18px;
+                padding: 12px 20px;
+            }
+
+            /* Menu items di <ul> */
+            #menuItems {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+
+            /* Menjadikan setiap <li> responsif */
+            #menuItems li {
+                width: 100%;
+            }
+        }
+
+        /* Media Query untuk responsif di layar kecil (mobile) */
+        @media screen and (max-width: 480px) {
+            #menuItems a {
+                font-size: 16px; /* Menyesuaikan ukuran font lebih kecil */
+                padding: 12px;
+            }
+            
+            #menuBtn {
+                font-size: 28px;
+            }
+        }
         
         /* Hero Section */
         #hero {
@@ -121,7 +199,7 @@
         }
 
         .intro h1 span {
-            color: #ff4081;
+            color: #00bcd4;
         }
 
         .intro p {
@@ -135,15 +213,15 @@
             padding: 10px 30px;
             margin-top: 20px;
             background-color: transparent;
-            border: 2px solid #ff4081;
-            color: #ff4081;
+            border: 2px solid #00bcd4;
+            color: #00bcd4;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
         }
 
         .btn:hover {
-            background-color: #ff4081;
+            background-color: #00bcd4;
             color: #fff;
         }
 
@@ -151,7 +229,7 @@
         .divider {
             width: 100%;
             height: 2px;
-            background-image: linear-gradient(to right, #ff4081, #ff80ab);
+            background-image: linear-gradient(to right, #00bcd4, #ff80ab);
             margin: 50px 0;
         }
 
@@ -181,7 +259,7 @@
         }
 
         #contact input[type="submit"] {
-            background-color: #ff4081;
+            background-color: #00bcd4;
             color: #fff;
             border: none;
             cursor: pointer;
@@ -189,8 +267,46 @@
         }
 
         #contact input[type="submit"]:hover {
-            background-color: #ff80ab;
+            background-color: #97d2da;
         }
+
+        #commentsContainer {
+            margin-top: 20px;
+            padding: 10px;
+            border-top: 2px solid #ddd;
+        }
+
+        .comment {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .comment img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+            background-color: #ccc; /* Default background */
+        }
+
+        .comment .text {
+            flex-grow: 1;
+        }
+
+        .comment .text h4 {
+            margin: 0 0 5px;
+            color: #555;
+        }
+
+        .comment .text p {
+            margin: 0;
+            color: #333;
+        }
+
 
         /* Footer */
         footer {
@@ -209,7 +325,7 @@
         }
 
         .social-icons a:hover {
-            color: #ff4081;
+            color: #00bcd4;
         }
 
         /* Media Queries */
@@ -237,18 +353,19 @@
 </head>
 <body>
     <header>
-        <div class="logo"></div>
-        <button class="navbar-toggler" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button id="menuBtn" onclick="toggleMenu()" aria-label="Toggle Menu">
+            ☰
         </button>
-        <ul id="navbar">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html" class="about-link">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="kontak.html">Saran</a></li>
-        </ul>
+        
+        <nav id="navbar">
+            <!-- Menu items akan berada di sini -->
+            <ul id="menuItems">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="kontak.html" class="active">Saran</a></li>
+            </ul>
+        </nav>
     </header>
 
     <section id="hero">
@@ -263,27 +380,80 @@
 
     <section id="contact">
         <h2>Saran untuk Portofolio</h2>
-        <form>
-            <input type="text" name="name" placeholder="Nama" required>
-            <textarea name="message" rows="5" placeholder="Saran" required></textarea>
+        <form id="commentForm">
+            <input type="text" id="name" name="name" placeholder="Nama" required>
+            <textarea id="message" name="message" rows="5" placeholder="Saran" required></textarea>
             <input type="submit" value="Kirim">
         </form>
+        <div id="commentsContainer">
+            <!-- Komentar akan ditampilkan di sini -->
+        </div>
     </section>
+    
 
     <footer>
-        
+        <div>&copy; 2024 FeroFasya</div>
         <div class="social-icons">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
+            <a href="https://www.tiktok.com/@ferdailyyy">Tiktok</a>
+            <a href="https://www.youtube.com/@FerDaily">Youtube</a>
+            <a href="https://www.instagram.com/ferogaaa">Instagram</a>
         </div>
     </footer>
 
     <script>
+        document.getElementById('commentForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Mencegah refresh halaman
+
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            // Kirim data ke server
+            const response = await fetch('/add-comment', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, message })
+            });
+
+            if (response.ok) {
+                const newComment = await response.json(); // Mendapatkan data komentar yang baru
+                displayComment(newComment); // Menampilkan komentar baru tanpa reload
+                document.getElementById('commentForm').reset(); // Reset form
+            } else {
+                alert('Gagal mengirim komentar. Silakan coba lagi.');
+            }
+        });
+
+        // Fungsi untuk menampilkan komentar
+        function displayComment(comment) {
+            const commentsContainer = document.getElementById('commentsContainer');
+            const div = document.createElement('div');
+            div.className = 'comment';
+
+            div.innerHTML = `
+                <img src="default-avatar.png" alt="Profile">
+                <div class="text">
+                    <h4>${comment.anonym}</h4>
+                    <p>${comment.message}</p>
+                </div>
+            `;
+            commentsContainer.prepend(div); // Tambahkan ke awal list komentar
+        }
+
         function toggleMenu() {
             const navbar = document.getElementById('navbar');
-            navbar.classList.toggle('active'); // Menambahkan/removing class active untuk navbar
+            navbar.classList.toggle('active');
         }
+
+        // Menutup menu jika klik di luar navbar
+        document.addEventListener('click', function(event) {
+            const navbar = document.getElementById('navbar');
+            const menuButton = document.getElementById('menuBtn');
+
+            // Jika klik di luar tombol menu dan navbar
+            if (!navbar.contains(event.target) && !menuButton.contains(event.target)) {
+                navbar.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
