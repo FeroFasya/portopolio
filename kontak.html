@@ -269,45 +269,81 @@
         #contact input[type="submit"]:hover {
             background-color: #97d2da;
         }
+        
 
-        #commentsContainer {
-            margin-top: 20px;
-            padding: 10px;
-            border-top: 2px solid #ddd;
+        #suggestions {
+            position: relative;
+            height: 200px; /* Atur tinggi sesuai kebutuhan */
+            overflow: hidden;
         }
 
-        .comment {
+        .suggestion {
+            position: absolute;
+            white-space: nowrap;
+            opacity: 0.8;
+            animation: float 10s linear forwards; /* Menggunakan 'forwards' untuk menghentikan animasi di akhir */
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateX(-100%); /* Mulai dari luar layar di kiri */
+            }
+            0% {
+                transform: translateX(100vw); /* Bergerak ke luar layar di kanan */
+            }
+            100% {
+                opacity: 0; /* Menghilangkan elemen */
+            }
+        }
+
+
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Mengatur agar popup muncul dari atas */
+            z-index: 1000; /* Pastikan popup di atas elemen lain */
+        }
+
+        .popup-content {
+            background-color: 111;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
-            margin: 15px 0;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
+            transform: translateY(-100%); /* Mulai dari atas */
+            animation: slideDown 0.5s forwards; /* Animasi slide down */
         }
 
-        .comment img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-            object-fit: cover;
-            background-color: #ccc; /* Default background */
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-100%); /* Mulai dari atas */
+            }
+            100% {
+                transform: translateY(0); /* Berhenti di posisi normal */
+            }
         }
 
-        .comment .text {
-            flex-grow: 1;
-        }
-
-        .comment .text h4 {
-            margin: 0 0 5px;
-            color: #555;
-        }
-
-        .comment .text p {
-            margin: 0;
+        .close {
+            cursor: pointer;
+            margin-left: auto;
+            font-size: 20px;
             color: #333;
         }
 
+        #whatsappLink {
+            text-decoration: none; /* Menghilangkan garis bawah */
+            color: #00bcd4; /* Menggunakan warna teks yang sama */
+        }
 
+       
         /* Footer */
         footer {
             display: flex;
@@ -380,16 +416,22 @@
 
     <section id="contact">
         <h2>Saran untuk Portofolio</h2>
-        <form id="commentForm">
-            <input type="text" id="name" name="name" placeholder="Nama" required>
-            <textarea id="message" name="message" rows="5" placeholder="Saran" required></textarea>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="Nama" required>
+            <textarea name="message" rows="5" placeholder="Saran" required></textarea>
             <input type="submit" value="Kirim">
         </form>
-        <div id="commentsContainer">
-            <!-- Komentar akan ditampilkan di sini -->
+        <div id="suggestions"></div>
+        <div id="whatsappPopup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <span class="close" id="closePopup">&times;</span>
+                <a id="whatsappLink" href="https://wa.me/628815750989?text=Saran%20apa%20untukku%F0%9F%A5%B0" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 30px; height: 30px; margin-right: 10px;">
+                    <span>Kasih saran di WA aja wkwk, aku gapunya database, Klik!</span>
+                </a>
+            </div>
         </div>
     </section>
-    
 
     <footer>
         <div>&copy; 2024 FeroFasya</div>
@@ -401,44 +443,8 @@
     </footer>
 
     <script>
-        document.getElementById('commentForm').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Mencegah refresh halaman
-
-            const name = document.getElementById('name').value;
-            const message = document.getElementById('message').value;
-
-            // Kirim data ke server
-            const response = await fetch('/add-comment', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, message })
-            });
-
-            if (response.ok) {
-                const newComment = await response.json(); // Mendapatkan data komentar yang baru
-                displayComment(newComment); // Menampilkan komentar baru tanpa reload
-                document.getElementById('commentForm').reset(); // Reset form
-            } else {
-                alert('Gagal mengirim komentar. Silakan coba lagi.');
-            }
-        });
-
-        // Fungsi untuk menampilkan komentar
-        function displayComment(comment) {
-            const commentsContainer = document.getElementById('commentsContainer');
-            const div = document.createElement('div');
-            div.className = 'comment';
-
-            div.innerHTML = `
-                <img src="default-avatar.png" alt="Profile">
-                <div class="text">
-                    <h4>${comment.anonym}</h4>
-                    <p>${comment.message}</p>
-                </div>
-            `;
-            commentsContainer.prepend(div); // Tambahkan ke awal list komentar
-        }
-
+        
+            
         function toggleMenu() {
             const navbar = document.getElementById('navbar');
             navbar.classList.toggle('active');
@@ -453,6 +459,33 @@
             if (!navbar.contains(event.target) && !menuButton.contains(event.target)) {
                 navbar.classList.remove('active');
             }
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form dari pengiriman default
+
+            const message = event.target.message.value;
+
+            // Buat elemen baru untuk saran
+            const suggestion = document.createElement('div');
+            suggestion.className = 'suggestion';
+            suggestion.innerHTML = `<img src="https://via.placeholder.com/30" alt="No Profile" style="border-radius: 50%; margin-right: 10px;"> <strong>Anomali</strong>: ${message}`;
+
+            // Tambahkan saran ke dalam div suggestions
+            document.getElementById('suggestions').appendChild(suggestion);
+
+            // Tampilkan popup WhatsApp
+            const whatsappLink = document.getElementById('whatsappLink');
+            whatsappLink.href = `https://wa.me/628815750989?text=Saran%20apa%20untukku%F0%9F%A5%B0${encodeURIComponent(message)}`; // Ganti 'nomor_wa_kamu' dengan nomor WhatsApp kamu
+            document.getElementById('whatsappPopup').style.display = 'flex';
+
+            // Reset form
+            event.target.reset();
+        });
+
+        // Menutup popup saat tombol close diklik
+        document.getElementById('closePopup').addEventListener('click', function() {
+            document.getElementById('whatsappPopup').style.display = 'none'; // Menyembunyikan popup saat tombol close diklik
         });
     </script>
 </body>
